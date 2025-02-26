@@ -1,3 +1,4 @@
+Assignment 2.12
 1. What is the purpose of the execution role on the Lambda function?
 ans: The execution role grants AWS Lambda the necessary permissions to access other AWS services, such as writing logs to   CloudWatch, reading/writing S3 objects, or interacting with databases, ensuring secure and controlled execution.
 
