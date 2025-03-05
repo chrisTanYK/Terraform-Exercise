@@ -88,10 +88,9 @@ You want multi-cloud infrastructure management (Terraform) while deploying serve
 Assignment 2.14
 
 1:Does SNS guarantee exactly once delivery to subscribers?
-Ans: No, Amazon SNS does not guarantee exactly-once delivery. SNS follows an at-least-once delivery model, which means:
-A message might be delivered more than once to subscribers.
-Subscribers should handle duplicate messages gracefully to ensure idempotency (i.e., processing the same message multiple times should not cause unintended side effects).
-SNS guarantees message delivery to supported endpoints (SQS, Lambda, HTTP/S, etc.) but does not ensure a single, unique delivery.
+Ans:No, Amazon SNS (Simple Notification Service) does not guarantee exactly once delivery to subscribers.
+SNS guarantees at least once delivery of messages, meaning that a message may be delivered to a subscriber one or more times, but it will not be lost. There could be duplicates in certain scenarios, such as network issues or retries.
+To handle message deduplication and ensure exactly once delivery, you would need to implement your own deduplication logic at the subscriber's end, especially when the subscribers are services like Lambda, SQS, or HTTP endpoints.
 
 2:What is the purpose of the Dead-letter Queue (DLQ)? This is a feature available to SQS/SNS/EventBridge.
 Ans: A Dead-letter Queue (DLQ) is a feature in Amazon SQS, SNS, and EventBridge that captures messages that fail delivery after multiple retries.
